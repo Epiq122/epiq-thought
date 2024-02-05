@@ -6,7 +6,17 @@
     <meta name="keywords"
           content="HTML, CSS, JavaScript,Python, Django, Mind, Thoughts" />
     <meta name="author" content="Rob Gleason" />
-    <title>Thoughtify</title>
+    <title>Epiq Thoughts | Register</title>
   </head>
-  <body>register</body>
+  <body>
+    <div class="container">
+      <h3>Create your account</h3>
+      <h5>Share your thoughts</h5>
+      <form method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </body>
 </html>

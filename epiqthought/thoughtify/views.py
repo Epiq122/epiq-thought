@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import UserCreateForm
 
 
 def home(request):
@@ -6,7 +7,15 @@ def home(request):
 
 
 def register(request):
-    return render(request, "thoughtify/register.html")
+    form = UserCreateForm()
+    if request.method == "POST":
+        form = UserCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+
+    context = {"form": form}
+    return render(request, "thoughtify/register.html", context)
 
 
 def login(request):
