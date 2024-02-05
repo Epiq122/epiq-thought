@@ -1,21 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Thoughtify" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thoughtify">
     <meta name="keywords"
-          content="HTML, CSS, JavaScript,Python, Django, Mind, Thoughts" />
-    <meta name="author" content="Rob Gleason" />
+          content="HTML, CSS, JavaScript, Python, Django, Mind, Thoughts">
+    <meta name="author" content="Rob Gleason">
     <title>Epiq Thoughts | Login</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
   </head>
-  <body>
+  <body class="login-form-container">
     <div class="container">
       <h3>Login to your account</h3>
       <h5>Share your thoughts</h5>
-      <form method="post" autocomplete="off">
+      <form method="post" autocomplete="off" class="login-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
     </div>
   </body>

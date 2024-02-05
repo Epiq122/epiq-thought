@@ -1,0 +1,33 @@
+/* login.css */
+
+.login-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #080808; /* Set background color to match body */
+}
+
+.container {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  background-color: #222;
+}
+
+h3,
+h5 {
+  color: #2a9fd6;
+  text-align: center;
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form input,
+.login-form button {
+  margin-bottom: 15px;
+  width: 100%;
+}

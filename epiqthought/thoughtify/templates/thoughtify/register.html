@@ -1,22 +1,41 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Thoughtify" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Thoughtify">
     <meta name="keywords"
-          content="HTML, CSS, JavaScript,Python, Django, Mind, Thoughts" />
-    <meta name="author" content="Rob Gleason" />
+          content="HTML, CSS, JavaScript, Python, Django, Mind, Thoughts">
+    <meta name="author" content="Rob Gleason">
+    <link rel="stylesheet"
+          type="text/css"
+          href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+          <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'css/registration.css' %}">
     <title>Epiq Thoughts | Register</title>
   </head>
-  <body>
-    <div class="container">
-      <h3>Create your account</h3>
-      <h5>Share your thoughts</h5>
-      <form method="post" autocomplete="off">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
-      </form>
+  <body class="bg-dark text-light">
+    <div class="container py-5">
+      <div class="form-layout">
+        <h3 class="mb-3">Create your account</h3>
+        <h5 class="mb-3">Share your thoughts</h5>
+        <form method="post" autocomplete="off">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="mb-3">
+              {{ field.label_tag }}
+              {{ field }}
+              {% if field.help_text %}<small class="form-text text-muted">{{ field.help_text }}</small>{% endif %}
+              {% for error in field.errors %}<div class="alert alert-danger">{{ error }}</div>{% endfor %}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>
