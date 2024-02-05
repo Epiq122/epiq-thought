@@ -30,4 +30,30 @@ h5 {
 .login-form button {
   margin-bottom: 15px;
   width: 100%;
+  padding: 10px;
+  border: 1px solid #2a2a2a;
+  border-radius: 5px;
+  background-color: #080808;
+  color: #ddd;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #2a9fd6;
+}
+
+.login-form button {
+  background-color: #2a9fd6;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.login-form button:hover {
+  background-color: #72c2e9;
+  box-shadow: 0px 0px 10px #72c2e9;
 }
