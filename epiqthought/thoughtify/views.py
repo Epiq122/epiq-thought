@@ -38,3 +38,8 @@ def login(request):
 
 def dashboard(request):
     return render(request, "thoughtify/dashboard.html")
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect("login")
