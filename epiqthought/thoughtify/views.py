@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreateForm
+from .forms import UserCreateForm, UserLoginForm
+from django.contrib.auth.models import auth
+from django.contrib.auth import authenticate, login, logout
 
 
 def home(request):
@@ -19,7 +21,19 @@ def register(request):
 
 
 def login(request):
-    return render(request, "thoughtify/login.html")
+    form = UserLoginForm()
+    if request.method == "POST":
+        form = UserLoginForm(request, data=request.POST)
+        if form.is_valid():
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                return redirect("dashboard")
+    context = {"form": form}
+    return render(request, "thoughtify/login.html", context)
 
 
 def dashboard(request):
