@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserCreateForm, UserLoginForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -36,6 +37,7 @@ def login(request):
     return render(request, "thoughtify/login.html", context)
 
 
+@login_required(login_url="login")
 def dashboard(request):
     return render(request, "thoughtify/dashboard.html")
 
