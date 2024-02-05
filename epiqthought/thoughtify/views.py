@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, "thoughtify/home.html")
+    return render(request, "thoughtify/index.html")
 
 
 def register(request):
