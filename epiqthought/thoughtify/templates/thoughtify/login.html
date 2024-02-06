@@ -19,6 +19,15 @@
     <div class="container">
       <h3>Login to your account</h3>
       <h5>Share your thoughts</h5>
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert alert-success" role="alert" id="message-timer">{{ message }}</div>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <div class="alert alert-danger" role="alert">{{ message }}</div>
+        {% else %}
+          <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endif %}
+      {% endfor %}
       <form method="post" autocomplete="off" class="login-form">
         {% csrf_token %}
         {{ form|crispy }}
@@ -26,4 +35,5 @@
       </form>
     </div>
   </body>
+  <script src="{% static 'js/app.js' %}"></script>
 </html>

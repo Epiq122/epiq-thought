@@ -3,6 +3,7 @@ from .forms import UserCreateForm, UserLoginForm
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 def home(request):
@@ -15,6 +16,7 @@ def register(request):
         form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Account created successfully")
             return redirect("login")
 
     context = {"form": form}
