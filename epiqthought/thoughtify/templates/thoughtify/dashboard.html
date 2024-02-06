@@ -1,21 +1,29 @@
+{% extends 'thoughtify/navbar.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Thoughtify" />
-    <meta name="keywords"
-          content="HTML, CSS, JavaScript,Python, Django, Mind, Thoughts" />
-    <meta name="author" content="Rob Gleason" />
-    <title>Thoughtify</title>
-  </head>
-  <body>
-    <div class="container">
-      <h3>Your Dashboard</h3>
-      <h5>Share your thoughts</h5>
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-      </form>
-    </div>
+    {% block content %}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Thoughtify" />
+      <meta name="keywords"
+            content="HTML, CSS, JavaScript,Python, Django, Mind, Thoughts" />
+      <meta name="author" content="Rob Gleason" />
+      <link rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/dashboard.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+      <title>Thoughtify</title>
+    </head>
+    <body>
+      <div class="container ">
+        <h3>Your Dashboard</h3>
+        <h5>Share your thoughts</h5>
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+      </div>
+    {% endblock %}
   </body>
 </html>
